@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <h3>Добавление продукта</h3>
+  <form id="addProduct">
+    <label for="title">Название</label>
+    <input type="text" id="title" name="title"><br>
+    
+    <label for="description">Описание</label>
+    <input type="text" id="description" name="description"><br>
+    
+    <label for="price">Цена</label>
+    <input type="text" id="price" name="price"><br>
+    
+    <button>Добавить продукт</button>
+  </form>
+
+  <h3>Добавленный продукт</h3>
+  <p>Название, Описание, Цена</p>
+
+  <h3>Существующие продукты</h3>
+  <p>Название, Описание, Цена</p>
+  <p>Название, Описание, Цена</p>
+  <p>Название, Описание, Цена</p>
+
+
+  <script>
+    addProduct.onsubmit = async (e) => {
+      e.preventDefault();
+  
+      let response = await fetch('http://127.0.0.1:8000/api/v1/products/', {
+        method: 'POST',
+        body: new FormData(addProduct)
+      });
+  
+      let result = await response.json();
+  
+      alert(result);
+    };
+  </script>
+
+</body>
+
+</html>
